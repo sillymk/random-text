@@ -1,0 +1,58 @@
+<html>
+
+<head>
+    <title>random-text</title>
+    <style type="text/css">
+        .text_style {
+            font-size: 10rem;
+            background: blue;
+            width: 100%;
+            height: 300px;
+            color: #fff;
+        }
+    </style>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="div_dandom_text"></div>
+    <span style="display: none;font-size: 11rem; height: 300px">displaying some other things</span>
+</body>
+
+<script type="text/javascript">
+    function text() {
+
+        var arr = new Array("AWESOME", "COOL", "SILLYMK", "BLOWING", "ASPIRE");
+        var dandomStyle = document.getElementById("div_dandom_text").classList.add("text_style");
+        var n = Math.floor(Math.random() * 5);
+        //contentStyle.style.visibility="visible";
+        //contentStyle.innerHTML="<BR>"+arr[n];
+        div_dandom_text.innerHTML = arr[n];
+    }
+
+    $(function () {
+        var interval;
+        var startInterval = function () {
+            interval = setInterval("text()", 300);
+        };
+
+        var stopInterval = function () {
+            clearInterval(interval);
+        }
+
+        startInterval();
+
+        $('body').mousedown(function () {
+            stopInterval();
+            $('#div_dandom_text').hide();
+            $('span').show().css('background', 'gray');
+        }).mouseup(function () {
+            startInterval();
+            $('#div_dandom_text').show();
+            $('span').hide();
+        });
+    });
+
+</script>
+
+</html>
