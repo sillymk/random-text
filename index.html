@@ -31,12 +31,23 @@
     }
 
     $(function () {
-        setInterval("text()", 300);
+        var interval;
+        var startInterval = function () {
+            interval = setInterval("text()", 300);
+        };
+
+        var stopInterval = function () {
+            clearInterval(interval);
+        }
+
+        startInterval();
 
         $('body').mousedown(function () {
+            stopInterval();
             $('#div_dandom_text').hide();
-            $('span').show().css('background','gray');
+            $('span').show().css('background', 'gray');
         }).mouseup(function () {
+            startInterval();
             $('#div_dandom_text').show();
             $('span').hide();
         });
